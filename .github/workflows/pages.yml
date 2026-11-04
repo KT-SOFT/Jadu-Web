@@ -39,6 +39,21 @@ jobs:
                       raise SystemExit("Unexpected archive path")
               archive.extractall(".")
           PY
+      - name: Verify and unpack TV page
+        shell: bash
+        run: |
+          sha256sum --check Jadu-TV.zip.sha256
+          python3 - <<'PY'
+          import zipfile
+          from pathlib import Path, PurePosixPath
+          destination = Path("dist/tv")
+          with zipfile.ZipFile("Jadu-TV.zip") as archive:
+              for info in archive.infolist():
+                  path = PurePosixPath(info.filename)
+                  if path.is_absolute() or ".." in path.parts or "\\\\" in info.filename:
+                      raise SystemExit("Unexpected TV archive path")
+              archive.extractall(destination)
+          PY
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload dist only
