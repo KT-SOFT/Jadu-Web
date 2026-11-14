@@ -1,5 +1,12 @@
 # 자두 음악 웹앱
 
+정식 아이폰: https://kt-soft.github.io/Jadu-Web/iPhone/
+
+차량(Tesla)·LGTV·TV 공유 및 현재 PC 주소는 유지합니다. 이전 실험 화면은 서버에서 제거하고 PC의 D 작업 폴더에 보관합니다.
+
+아래 내용은 이전 작업 기록입니다.
+
+
 [자두 열기](https://kt-soft.github.io/Jadu-Web/?v=20261105-shared12)
 
 아이폰 Safari 또는 Brave에서 사용합니다. 음악 파일 대신 YouTube 주소를 이 기기에 저장합니다. Safari의 공유 → 홈 화면에 추가로 설치 서명 없이 사용할 수 있습니다.
