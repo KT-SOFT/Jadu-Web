@@ -38,3 +38,8 @@ body.web2-style9 #h-content .search-form textarea.search-query:focus{outline:3px
 body.web2-style9 .search-query::placeholder{color:#b4c5ba!important;-webkit-text-fill-color:#b4c5ba;opacity:1}
 body.web2-style9 #h-content .search-form .search-suggestions>button,body.web2-style9 #h-video-panel .video-search .search-suggestions>button{background:transparent!important;color:#f3faf5!important;-webkit-text-fill-color:#f3faf5!important;opacity:1;font-size:18px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
 body.web2-style9 #h-content .search-form .search-suggestions>button[aria-selected=true],body.web2-style9 #h-video-panel .video-search .search-suggestions>button[aria-selected=true]{background:#426c51!important}
+
+/* 검색 후에는 한 줄과 말줄임으로 표시하고 누르면 전체 문장을 편집한다. */
+body.web2-style9 #h-content .search-form .history-input.is-search-collapsed textarea.search-query{height:54px!important;overflow:hidden;color:transparent!important;-webkit-text-fill-color:transparent;caret-color:transparent}
+body.web2-style9 #h-content .search-form .history-input .search-query-summary{position:absolute;top:0;left:19px;right:48px;height:54px;line-height:54px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;pointer-events:none;color:#f2f8f3;-webkit-text-fill-color:#f2f8f3;font-size:18px;z-index:1}
+body.web2-style9 #h-content .search-form .history-input .search-query-summary[hidden]{display:none!important}
