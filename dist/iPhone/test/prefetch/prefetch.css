@@ -26,3 +26,15 @@
 
 /* 입력 중에는 후보를 고르고 선택한 문장으로 검색한다. */
 body.web2-style9 .history-input{position:relative}body.web2-style9 .search-suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:600;background:#263e30;border:1px solid #8da999;border-radius:14px;box-shadow:0 12px 32px #0008;overflow:auto;overscroll-behavior:contain;padding:5px;touch-action:pan-y}body.web2-style9 .search-suggestions>button{display:block;width:100%;min-height:46px;height:auto;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#f2f7f3;font-size:17px;font-weight:400;text-align:left;white-space:normal;line-height:1.4}body.web2-style9 .search-suggestions>button[aria-selected=true]{background:#426c51}body.web2-style9 .video-search .search-suggestions>button{height:auto;justify-content:start}body.web2-style9 .search-suggestions[hidden]{display:none!important}
+
+/* 검색은 입력창과 키보드로 처리한다. */
+body.web2-style9 #h-content .search-form.search-single-control,body.web2-style9 #h-video-panel .video-search.search-single-control{display:block}
+body.web2-style9 .search-single-control .history-input{width:100%;box-sizing:border-box}
+body.web2-style9 .history-input .search-clear{position:absolute;right:5px;top:50%;transform:translateY(-50%);display:grid;place-items:center;width:38px;min-width:38px;height:42px;min-height:42px;padding:0;border:0;border-radius:50%;background:transparent!important;color:#e5f4eb!important;-webkit-text-fill-color:#e5f4eb;font-size:26px;line-height:1;z-index:3}
+body.web2-style9 .history-input .search-clear[hidden],body.web2-style9 .history-input .history-toggle[hidden]{display:none!important}
+body.web2-style9 .history-input .search-query{padding-right:48px!important;box-sizing:border-box;color:#f2f8f3!important;-webkit-text-fill-color:#f2f8f3}
+body.web2-style9 #h-content .search-form textarea.search-query{display:block;width:100%;min-width:0;min-height:54px;max-height:144px;resize:none;overflow-x:hidden;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;line-height:1.4;font:inherit;font-size:18px;line-height:1.4;padding:14px 48px 14px 18px;border:1px solid #ffffff25;border-radius:26px;background:#24372c;outline:none;box-shadow:none}
+body.web2-style9 #h-content .search-form textarea.search-query:focus{outline:3px solid #99e8b2;outline-offset:2px}
+body.web2-style9 .search-query::placeholder{color:#b4c5ba!important;-webkit-text-fill-color:#b4c5ba;opacity:1}
+body.web2-style9 #h-content .search-form .search-suggestions>button,body.web2-style9 #h-video-panel .video-search .search-suggestions>button{background:transparent!important;color:#f3faf5!important;-webkit-text-fill-color:#f3faf5!important;opacity:1;font-size:18px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
+body.web2-style9 #h-content .search-form .search-suggestions>button[aria-selected=true],body.web2-style9 #h-video-panel .video-search .search-suggestions>button[aria-selected=true]{background:#426c51!important}
