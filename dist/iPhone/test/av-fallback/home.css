@@ -708,3 +708,9 @@ body.web2-style9 .dock #h-audio-source{font-size:11px!important;line-height:1.25
 
 
 #av-test-dialog>div{flex-wrap:wrap}
+
+/* 유튜브 소리 대체 중에는 목록을 유지하고 같은 플레이어를 화면 밖에 둔다. */
+body.youtube-audio-only #h-video-panel{display:block!important;position:fixed!important;inset:auto!important;left:-10000px!important;top:0!important;width:240px!important;height:200px!important;max-width:none!important;max-height:none!important;visibility:visible!important;pointer-events:none!important;overflow:hidden!important;margin:0!important;padding:0!important}
+body.youtube-audio-only #h-video-panel>:not(#h-video-stage){display:none!important}
+body.youtube-audio-only #h-video-stage{display:block!important;position:absolute!important;inset:0!important;width:240px!important;height:200px!important}
+body.youtube-audio-only #h-video-stage .video-stage,body.youtube-audio-only #h-video-stage #video-mount{position:relative!important;inset:0!important;width:240px!important;height:200px!important;aspect-ratio:auto!important;margin:0!important}
