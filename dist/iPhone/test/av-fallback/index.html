@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <base href="../../">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#f5f2f8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="자두">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>자두 · iPhone 음원 대체 시험 1117af1</title>
+  <link rel="preconnect" href="https://yt.chocolatemoo53.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/jadu-paw-32-20261107-v2.png?v=1114s12">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon-1116ic1.png">
+
+  <link rel="stylesheet" href="./styles.css?v=20261109-motion68">
+  <style>.app[hidden]{display:none!important}#app-exit{min-width:36px;font-size:21px;line-height:1} @media(max-width:359px){.app-header .header-actions{gap:4px}#app-exit{min-width:30px}}</style>
+  <style>
+  /* Larger touch targets and a full-height list for the car browser. */
+  .app.car-layout,.app.car-layout.is-single-pane.is-video-hidden{display:flex;flex-direction:column;height:100dvh;min-height:0;max-width:none}
+  .car-layout>.app-header{display:flex;flex:0 0 auto;flex-wrap:wrap;gap:4px 12px;padding:4px 10px}
+  .car-layout .brand{order:0}.car-layout .brand h1{font-size:20px}
+  .car-layout .brand-title{display:flex;align-items:center;gap:10px}
+  .car-layout .brand-playback{font-size:14px}
+  .car-layout .app-header .view-options{order:1;flex:1;justify-content:flex-end;gap:8px;min-height:54px}
+  .car-layout .app-header .header-actions{order:2;gap:6px}
+  .car-layout .view-options .checkbox{font-size:15px;min-height:54px}
+  .car-layout input[type=checkbox]{width:22px;height:22px;flex-basis:22px}
+  .car-layout .app-header button{min-height:54px;font-size:15px}
+  .car-layout .meow-option{font-size:13px}
+  .car-layout #library-select{width:150px;max-width:20vw;min-height:45px;height:45px;font-size:15px;padding:4px 8px}
+  .car-layout .library-title-tools{gap:4px}
+  .car-layout #library-more{min-width:38px;padding:0 5px;font-size:22px}
+  .app.car-layout>.workspace,.app.car-layout.is-single-pane.is-video-hidden>.workspace{display:grid;flex:1;min-height:0;grid-template-rows:minmax(0,1fr);align-items:stretch;padding:6px 8px 8px;gap:8px}
+  .car-layout .workspace .library{height:100%;min-height:0;padding:8px;gap:6px;overflow:hidden}
+  .car-layout .workspace .list-box{flex:1 1 0;height:auto;min-height:120px}
+  .car-layout .search-row input,.car-layout .search-row>button{height:54px;min-height:54px;font-size:18px}
+  .car-layout .recent-toggle{width:44px;min-width:44px}
+  .car-layout .search-input-wrap>input[type=search]{padding-right:48px}
+  .car-layout .library-modes button{min-height:48px;font-size:16px}
+  .car-layout .list-heading{min-height:48px;padding:5px 12px}
+  .car-layout .list-heading strong{font-size:16px}.car-layout .list-heading span{display:none}
+  .car-layout .list-heading button{min-height:44px;font-size:15px}
+  .car-layout .track-row,.car-layout .track-main{min-height:81px}
+  .car-layout .track-main{padding:9px 4px;gap:5px}
+  .car-layout .track-main strong{font-size:16px}.car-layout .track-main small{font-size:14px}
+  .car-layout .track-check{width:42px;flex-basis:42px;min-height:78px}
+  .car-layout .delete-list-actions{max-width:615px;font-size:15px;gap:6px}
+  .car-layout .delete-list-actions>button{height:48px;min-height:48px;font-size:15px;padding:0 6px}
+  .car-layout .playback-buttons button{height:51px;min-height:51px;font-size:18px}
+  .car-layout .results-more{min-height:54px;font-size:16px}
+  .car-layout .status{min-height:0;max-height:36px;font-size:13px}
+  .car-layout .video-column{height:100%;min-height:0;max-height:100%;overflow:auto}
+  </style>
+  <script>
+  (function () {
+    // 목차: 1. 시작 상태 2. 실패 이유 표시 3. 완료·오류 수신 4. 다시 불러오기
+    var ready = false, failed = false, timer, failure = '';
+    window.jaduStartupStep = '코드 받기';
+    function showFailure(reason) {
+      if (ready) return;
+      if (!failure && typeof reason === 'string') {
+        failure = reason.replace(/https?:\/\/\S+/g, '[주소]').replace(/Bearer\s+\S+/gi, '[인증값]').slice(0, 180);
+      }
+      failed = true;
+      var notice = document.getElementById('app-startup-notice');
+      if (notice) {
+        notice.hidden = false;
+        notice.querySelector('span').textContent = '자두 시작 확인 iPhone · ' + window.jaduStartupStep + ' · ' +
+          (failure || '아직 준비가 끝나지 않았어요.') + ' 다시 불러오기를 눌러 주세요.';
+      }
+    }
+    window.addEventListener('jadu-ready', function () {
+      ready = true; clearTimeout(timer);
+      var notice = document.getElementById('app-startup-notice');
+      if (notice) notice.hidden = true;
+    });
+    window.addEventListener('jadu-start-failed', function (event) { showFailure(event.detail); });
+    window.addEventListener('error', function (event) {
+      var source = event.target && event.target.src || event.filename || '';
+      if (/\/app\.bundle\.js(?:\?|$)/.test(source)) showFailure(event.message ? event.message + (event.lineno ? ' (줄 ' + event.lineno + ')' : '') : '코드 파일을 받지 못했어요.');
+    }, true);
+    window.addEventListener('DOMContentLoaded', function () {
+      var retry = document.getElementById('app-startup-retry');
+      if (retry) retry.addEventListener('click', function () { location.reload(); });
+      if (failed) showFailure();
+      if (!ready) timer = setTimeout(showFailure, 12000);
+    });
+  }());
+  </script>
+  <script defer src="./test/av-fallback/app.bundle.js?v=1117af1"></script>
+
+  <style id="web2-style9">
+  body.web2-style9{font-size:18px}
+  body.web2-style9 :is(button,input,select,label,summary,p,small,span,strong,div,li,a){font-size:18px}
+  body.web2-style9 .app.car-layout>.app-header{display:flex;flex-wrap:nowrap;align-items:center;gap:10px;padding:4px 12px}
+  body.web2-style9 .app-header>.brand{order:0;flex:1 1 260px;min-width:200px;min-height:62px}
+  body.web2-style9 .brand h1{font-size:26px}
+  body.web2-style9 .brand-title{display:flex;align-items:center;gap:12px;min-width:0}
+  body.web2-style9 .brand-playback{max-width:200px;font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body.web2-style9 .app-header>.header-actions{order:2;flex:0 0 auto;gap:8px}
+  body.web2-style9 .app-header>.view-options{order:1;flex:0 0 auto;justify-content:flex-end;align-items:center;gap:10px;min-height:54px;margin-left:auto}
+  body.web2-style9 .app-header .meow-option,body.web2-style9 .header-actions .local-status,body.web2-style9 #brave-open-toolbar,body.web2-style9 #youtube-account{display:none!important}
+  body.web2-style9 .app-header .checkbox{font-size:18px;min-height:54px}
+  body.web2-style9 :is(.app-header,.search-row,.library-modes,.list-heading,.delete-list-actions,.playback-buttons,.sheet-header,.settings-group,.account-buttons,.track-menu,.player-notice) button:not(.simple-jadu):not(.recent-toggle),body.web2-style9 .results-more{height:54px;min-height:54px;font-size:18px;border:1px solid var(--line);border-radius:7px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;line-height:1.25}
+  body.web2-style9 .app-header button{min-width:54px}
+  body.web2-style9 #app-exit,body.web2-style9 #library-more{font-size:26px;padding:0 10px}
+  body.web2-style9 #library-select{height:45px;min-height:45px;width:150px;max-width:20vw;font-size:15px;border:1px solid var(--line);border-radius:7px;padding:4px 8px}
+  body.web2-style9 #library-select option{font-size:24px;line-height:1.5;padding:10px 12px}
+  body.web2-style9 .library-title-tools{gap:8px}
+  body.web2-style9 .search-row input{height:54px;min-height:54px;font-size:18px}
+  body.web2-style9 #search-button{padding-left:20px;padding-right:20px}
+  body.web2-style9 #player-search-form{grid-template-columns:minmax(0,1fr) 44px}
+  body.web2-style9 #player-search-button{width:44px;min-width:44px}
+  body.web2-style9 .recent-toggle{height:auto;min-height:0;top:0;bottom:0;width:44px;padding:0;border:0;border-radius:0;background:transparent}
+  body.web2-style9 .workspace .library{gap:6px;padding:8px;height:100%;min-height:0;overflow:hidden}
+  body.web2-style9 .workspace .list-box{flex:1 1 0;min-height:120px}
+  /* 목록 머릿말: 노래 한 행(72px + 구분선1px)과 같은 높이 */
+  body.web2-style9 .list-heading{flex:0 0 73px;min-height:73px;padding:0 10px}
+  body.web2-style9 .list-heading strong{font-size:18px;font-weight:600}
+  body.web2-style9 .list-heading span{display:none}
+  body.web2-style9 .track-row,body.web2-style9 .track-main{min-height:72px}
+  body.web2-style9 .track-main{padding:12px 4px;gap:0;justify-content:center}
+  body.web2-style9 .track-main strong{display:block;font-size:24px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:unset}
+  body.web2-style9 .track-main small{display:none}
+  body.web2-style9 .track-check{width:48px;flex-basis:48px;min-height:70px}
+  body.web2-style9 input[type=checkbox]{width:24px;height:24px;flex-basis:24px}
+  body.web2-style9 .delete-list-actions{margin-left:0;max-width:none;gap:6px;font-size:18px;grid-template-columns:auto repeat(2,minmax(0,1fr))}
+  body.web2-style9 .delete-list-actions>button{font-size:18px;min-width:0}
+  body.web2-style9 .playback-buttons{flex:0 0 54px;gap:6px}
+  body.web2-style9 .status{min-height:0;max-height:30px;margin:0;padding:0 2px;font-size:18px;line-height:1.4}
+  body.web2-style9 .status:empty{display:none}
+  body.web2-style9 .sheet-header h2{font-size:24px}
+  body.web2-style9 .settings-section h3{font-size:18px}
+  body.web2-style9 .setting-row{font-size:18px;min-height:54px}
+  body.web2-style9 .settings-group .setting-link{width:100%;justify-content:flex-start;text-align:left}
+  body.web2-style9 .simple-jadu,body.web2-style9 .simple-jadu img{width:54px;height:54px;min-height:54px}
+  @media(max-width:760px){
+    body.web2-style9 .app.car-layout>.app-header{flex-wrap:wrap}
+    body.web2-style9 .app-header>.brand{min-width:180px}
+    body.web2-style9 .app-header>.view-options{order:3;flex:1 1 100%;flex-wrap:wrap}
+    body.web2-style9 .header-actions .local-status{display:none}
+    body.web2-style9 .brand-title{flex-wrap:wrap;gap:0 8px}
+    body.web2-style9 #library-select{width:150px;max-width:42vw}
+    body.web2-style9 .brand h1{font-size:22px}
+    body.web2-style9 .app-header{padding:4px 8px}
+  }
+  </style>
+
+  <style>
+  body.web2-style9 .track-save{display:flex;align-items:center;justify-content:center;flex:0 0 25px;width:25px;min-width:25px;height:25px;min-height:25px;margin:0 10px 0 4px;padding:0;border:1px solid var(--line);border-radius:50%;font-size:14px;line-height:1;align-self:center;transform:none;color:var(--muted);background:var(--paper)}
+  body.web2-style9 .track-save.is-saved{color:var(--accent);border-color:var(--accent);background:var(--selection)}
+  body.web2-style9 .list-heading>.list-heading-actions{display:flex;flex-direction:row;align-items:center;flex:0 0 auto;gap:6px}
+  body.web2-style9 .list-heading-actions button{min-width:108px}
+  body.web2-style9 .music-search-tab{display:flex;flex:1;min-width:0}
+  body.web2-style9 .music-search-tab #show-search-mode{flex:1;min-width:0;border-right:0;border-radius:7px 0 0 7px;padding-right:4px}
+  body.web2-style9 .music-search-tab #music-category-open{flex:0 0 52px;width:52px;min-width:52px;padding:0;border-left:0;border-radius:0 7px 7px 0}
+  body.web2-style9 .music-search-tab.is-active>button{background:#e3d8ee;color:#4c3e62}
+  body.web2-style9 #music-category-open svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;transition:transform .15s ease}
+  body.web2-style9 #music-category-open[aria-expanded="true"] svg{transform:rotate(180deg)}
+  </style>
+<style>#diagnostics-dialog{width:min(1000px,96vw);max-width:96vw}#diagnostics-dialog .sheet-body{display:flex;flex-direction:column;gap:10px;min-height:0}#diagnostics-output{white-space:pre-wrap;overflow:auto;height:40vh;min-height:140px;background:#f4f0f7;padding:12px;border:1px solid #c9bfd5;border-radius:7px;font:13px/1.6 ui-monospace,monospace}.diagnostics-tools{display:flex;gap:8px;flex-wrap:wrap}.diagnostics-tools button{min-height:44px;padding:0 14px;font-size:16px;border:1px solid #c9bfd5;border-radius:7px;background:#eee8f4}</style><style>body.web2-style9 .playback-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}body.web2-style9 .list-heading>div:first-child{display:flex;flex-direction:row;align-items:center;gap:8px;min-width:0}body.web2-style9 .list-heading #list-order{flex:0 0 auto;height:44px;min-height:44px;border:0;background:transparent;padding:0 4px;font-size:18px}</style><style>body.web2-style9 .track-row.is-playing{background:var(--selection)}body.web2-style9 .brand .simple-jadu{min-width:54px}</style><style>body.web2-style9 #simple-jadu img{transform-origin:50% 90%;transform:scaleX(var(--jadu-facing,1))}body.web2-style9 #simple-jadu.is-listening:not(.is-meowing) img{animation:jadu-trial-dance .86s ease-in-out infinite!important}@keyframes jadu-trial-dance{0%,100%{transform:translateY(0) rotate(-5deg) scaleX(var(--jadu-facing,1))}25%{transform:translateY(-3px) rotate(0deg) scaleX(var(--jadu-facing,1))}50%{transform:translateY(0) rotate(5deg) scaleX(var(--jadu-facing,1))}75%{transform:translateY(-2px) rotate(0deg) scaleX(var(--jadu-facing,1))}}@media(prefers-reduced-motion:reduce){body.web2-style9 #simple-jadu.is-listening:not(.is-meowing) img{animation:none!important;transform:scaleX(var(--jadu-facing,1))}}</style><style>body.web2-style9 .recent-toggle svg{width:18px;height:18px;stroke-width:2.2;stroke:var(--accent);transition:transform .15s ease}body.web2-style9 .recent-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}body.web2-style9 .search-recent-menu .recent-query{min-height:48px;font-size:18px}body.web2-style9 .search-recent-menu .recent-delete{min-height:48px}body.web2-style9 .search-recent-menu .recent-menu-title{font-size:14px}</style><style>body.web2-style9 #library-more,body.web2-style9 #app-exit{min-width:62px}body.web2-style9 #settings-open{min-width:70px}body.web2-style9 .track-row.is-selected{background:var(--paper)}body.web2-style9 .track-row.is-playing{background:var(--selection)}body.web2-style9 #video-transport{position:sticky;bottom:0;z-index:8;flex:0 0 auto;min-height:60px;padding:6px 0 0;background:var(--paper);border-top:1px solid var(--line)}</style><style>#public-playlists-dialog{width:min(700px,94vw)}#public-playlists-dialog .sheet-body{display:flex;flex-direction:column;gap:10px;min-height:0;overflow:auto}#public-playlists-message{margin:0}.public-playlists-list{display:flex;flex-direction:column;gap:7px}.public-playlist-choice{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;white-space:normal;gap:4px;width:100%;min-height:64px;padding:10px 12px;text-align:left;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px}.public-playlist-choice strong{font:inherit;font-size:18px;line-height:1.4;overflow-wrap:anywhere}.public-playlist-choice small{font-size:14px;color:var(--muted);line-height:1.4}.public-playlist-choice:focus-visible{outline:2px solid var(--accent);outline-offset:2px}</style><style>
+body.web2-style9 .flow37-progress{display:flex;flex:0 0 44px;align-items:center;gap:12px;padding:0 16px;border-top:1px solid var(--line);background:var(--paper)}
+body.web2-style9 .video-column .flow37-progress{position:sticky;bottom:61px;z-index:8}
+body.web2-style9 .flow37-progress input{flex:1;min-width:0;width:100%;height:40px;min-height:40px;padding:0;border:0;border-radius:0;accent-color:var(--accent);cursor:pointer;touch-action:pan-y}
+body.web2-style9 .flow37-progress output{flex:0 0 auto;min-width:118px;white-space:nowrap;font-size:18px;font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+@media(max-width:760px){body.web2-style9 .flow37-progress{gap:8px;padding:0 8px}body.web2-style9 .flow37-progress output{min-width:100px;font-size:15px}}
+</style>
+  <style id="playlist-navigation41">
+  #list-heading.is-playlist-back,#browse-title.is-playlist-back{display:inline-flex;align-items:center;gap:5px;flex:0 1 auto!important;width:fit-content;max-width:100%;cursor:pointer}
+  #list-heading.is-playlist-back .playlist-heading-title,#browse-title.is-playlist-back .playlist-heading-title{display:block!important;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:inherit;color:inherit}
+  .is-playlist-back .playlist-heading-previous{display:block!important;flex:0 0 auto;font:inherit;color:inherit}
+  .track-row.is-playlist .track-main{padding-left:12px;padding-right:12px}
+  body.web2-style9 #search-button{width:112px;min-width:112px}
+  body.web2-style9 .search-row{grid-template-columns:minmax(0,1fr) 112px}
+  </style>
+
+  <style id="saved-heading42">
+  #list-heading.is-saved-order{display:inline-block;flex:0 1 auto!important;width:fit-content;max-width:100%;cursor:pointer;color:var(--ink);background:transparent}
+  #list-heading.is-saved-order:is(:hover,:focus,:active){color:var(--ink);background:transparent}
+  </style>
+
+  <style id="header-settings-menu">
+  /* 목차: 1. 설정 점 세 개 2. 배경 없는 버튼 3. 종료 단추 숨김 */
+  body #settings-open,body #settings-open:hover,body #settings-open:active{background:transparent;border:0;box-shadow:none;color:inherit;font-size:28px;letter-spacing:2px}
+  #app-exit[hidden]{display:none!important}
+  </style>
+  <style id="vehicle-header1112">
+  /* Contents: 1. Header touch height 2. View controls 3. Library selector and options. */
+  body.web2-style9 .app.car-layout>.app-header{min-height:84px;padding-top:6px;padding-bottom:6px;gap:12px}
+  body.web2-style9 .app-header>.brand{min-height:72px}
+  body.web2-style9 .app-header .brand h1{font-size:31px}
+  body.web2-style9 .app-header .brand-playback{font-size:22px}
+  body.web2-style9 .app-header>.view-options{min-height:65px;gap:12px}
+  body.web2-style9 .app-header .checkbox{min-height:65px;font-size:22px;gap:8px}
+  body.web2-style9 .app-header input[type=checkbox]{width:29px;height:29px;flex-basis:29px}
+  body.web2-style9 .app-header #settings-open{height:65px;min-height:65px;min-width:74px}
+  body.web2-style9 .app-header #library-select{width:180px;max-width:24vw;height:54px;min-height:54px;font-size:18px;padding:6px 38px 6px 10px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='%23645470' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:22px}
+  body.web2-style9 .app-header #library-select option{font-size:29px;line-height:1.5;padding:12px 14px}
+  @media(max-width:760px){body.web2-style9 .app-header #library-select{max-width:60vw}body.web2-style9 .app-header .brand h1{font-size:26px}}
+  </style>
+<link rel="stylesheet" href="./test/av-fallback/home.css?v=1117af1"><script defer src="./account-settings.js?v=1"></script><style id="iphone-control-display">body .dock #h-video-toggle{display:none!important}@media(max-width:650px){body .dock .progress{grid-column:1/-1}}body.np-video-fullscreen #h-now-playing{visibility:hidden!important;pointer-events:none!important}body.np-video-fullscreen #h-video-stage .video-stage{border-radius:0!important}body.np-video-fullscreen #h-video-stage #video-mount{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;aspect-ratio:auto!important;margin:0!important}body.np-video-fullscreen #h-video-stage #video-mount iframe{inset:0!important;left:0!important;top:0!important;width:100%!important;height:100%!important;transform:none!important}</style>
+</head>
+<body class="web2-style9">
+  <noscript><p class="startup-notice">자두의 버튼을 사용하려면 브라우저에서 JavaScript 실행을 허용해 주세요.</p></noscript>
+  <div id="app-startup-notice" class="startup-notice" role="status"><span>저장한 설정을 불러오는 중이에요…</span><button id="app-startup-retry" type="button">다시 불러오기</button></div>
+  <div class="app" hidden>
+    <header class="app-header">
+      <div class="brand"><span class="simple-jadu-wrap"><button id="simple-jadu" class="simple-jadu" type="button" aria-label="자두 야옹 듣기" title="누르면 야옹"><img src="./assets/pet/Frames/idle/frame_00.png" alt="자두" width="64" height="64"></button><span id="meow-status" class="meow-feedback" role="status" aria-live="polite" hidden></span></span><div class="brand-title"><h1>자두 0107</h1><span id="player-playing-label" class="brand-playback" role="status" aria-live="polite">재생 대기</span></div></div>
+      <div class="header-actions"><span id="storage-status" class="local-status" role="status">이 기기에 저장</span><button id="settings-open" type="button" aria-label="설정" title="설정">⋯</button><button id="app-exit" type="button" hidden aria-label="자두 종료" title="음악 종료 · 마지막 위치 저장">×</button></div>
+    <div class="view-options" role="group" aria-label="화면 표시"><label class="checkbox"><input id="video-visible" type="checkbox" checked>유튜브 보기</label><label class="checkbox"><input id="list-visible" type="checkbox" checked>목록 보기</label><button id="brave-open-toolbar" type="button" aria-label="Brave에서 열기" title="Brave에서 자두를 열고 브라우저 설정하기">Brave ↗</button></div>
+    </header>
+    <audio id="jadu-meow" src="./assets/pet/Sounds/meow.wav?v=20261107-app18" preload="auto" playsinline hidden></audio>
+    <main id="workspace" class="workspace">
+      <div class="video-column">
+        <section id="player-pane" class="player-pane" aria-label="YouTube 동영상">
+          <header class="pane-title" hidden><span><img src="./assets/icon.png?v=1114s12" alt="" width="15" height="15">자두 음악</span></header>
+          <div class="player-toolbar" hidden><button id="player-back" aria-label="이전 재생 내역" disabled>←</button><button id="player-forward" aria-label="다음 재생 내역" disabled>→</button></div>
+          <div class="player-top" hidden><span>YouTube</span></div>
+          <div class="youtube-surface">
+            <div class="youtube-header">
+              <button id="youtube-home" type="button" class="youtube-brand" aria-label="유튜브 목록" title="썸네일 목록으로 돌아가기"><svg width="22" height="16" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#f03"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span>YouTube</span></button>
+              <form id="player-search-form" class="youtube-search"><span class="search-input-wrap"><input id="player-query" type="search" aria-label="유튜브 음악 검색" placeholder="검색" maxlength="500" autocomplete="off"><button id="player-recent-open" type="button" class="recent-toggle" aria-label="최근 검색어 보기" title="최근 검색어" aria-haspopup="menu" aria-expanded="false" aria-controls="search-recent-menu"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></span><button id="player-search-button" type="submit" aria-label="유튜브 음악 검색하기" disabled><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button></form>
+              <button id="youtube-account" type="button" class="youtube-account" aria-label="유튜브 계정"><img id="youtube-account-avatar" alt="" width="20" height="20" referrerpolicy="no-referrer" hidden><svg id="youtube-account-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3"/><path d="M5 21v-3a7 7 0 0 1 14 0v3"/><circle cx="12" cy="12" r="11"/></svg><span id="youtube-account-label">로그인</span></button>
+            </div>
+            <p id="player-search-feedback" class="search-feedback" role="status" aria-live="polite" hidden></p>
+            <section id="browse-pane" class="browse-pane" aria-label="썸네일 동영상 목록"><div id="browse-categories" class="browse-categories" role="group" aria-label="동영상 분류"><button type="button" data-browse-category="all">전체</button><button type="button" data-browse-category="news">뉴스</button><button type="button" data-browse-category="podcasts">팟캐스트</button><button type="button" data-browse-category="music">음악</button><button type="button" data-browse-category="mixes">믹스</button><button type="button" data-browse-category="suggestions">추천</button><button type="button" data-browse-category="sharedlibrary">공유 보관함</button><button type="button" data-browse-category="recent" title="자두에서 최근 재생한 동영상">최근 재생</button></div><header class="browse-heading"><strong id="browse-title">노래를 검색해 보세요.</strong><button id="shared-refresh" type="button" hidden>새로고침</button><button id="show-current-video" type="button" hidden>재생 화면</button></header><div id="browse-results" class="browse-grid"></div><button id="browse-more" type="button" class="results-more" aria-label="썸네일 결과 더 보기" hidden>더 보기</button><p id="browse-empty" class="browse-empty">노래 제목이나 가수를 검색하면 여기에 목록이 나와요.</p></section>
+            <div id="video-view-actions" class="video-view-actions" hidden><button id="show-browse" type="button">◀ 검색 목록</button></div>
+            <div class="video-stage"><div id="video-mount" class="video-mount"></div><div id="video-empty" class="video-empty"><span aria-hidden="true">▶</span><p>노래를 골라 주세요.</p></div></div>
+            <div id="player-notice" class="player-notice" role="status" aria-live="polite" hidden><p id="player-notice-text"></p><button id="player-retry" type="button" hidden>다시 재생</button></div>
+            <div class="youtube-details"><h2 id="youtube-video-title">노래를 선택해 주세요.</h2><div class="youtube-video-meta"><span id="youtube-channel">YouTube</span><a id="youtube-watch" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" hidden>YouTube에서 보기 ↗</a></div></div>
+          </div>
+          
+        <div id="video-transport" class="playback-buttons" aria-label="유튜브 재생 조작" hidden><button id="player-previous" type="button" aria-label="이전 곡" disabled>◀ 이전</button><button id="player-play" type="button" class="primary" disabled>재생 ▶</button><button id="player-next" type="button" aria-label="다음 곡" disabled>다음 ▶</button></div>
+        </section>
+        <section id="pet-pane" hidden class="pet-pane" aria-label="자두와 대화">
+          <div class="pet-caption"><button id="pet-open" class="plain-button">자두와 대화 <span aria-hidden="true">⌃</span></button><span id="pet-feeding-state" role="status"></span></div>
+          <div id="pet-home"><div id="pet-content" class="pet-content">
+            <div class="pet-scene"><div id="pet-mount" class="pet-mount"></div><div id="pet-bubble" class="bubble" role="status" aria-live="polite">자두를 불러오고 있어요.</div></div>
+            <div class="pet-food"><button data-feed="treat">츄르 <span class="treat-count">—</span></button><button data-feed="meal">밥 <span class="meal-count">—</span></button><button data-feed="water">물 주기</button></div>
+            <div class="pet-touch"><button data-touch="head">머리</button><button data-touch="belly">배</button><button data-touch="tail">꼬리</button><button data-touch="leftPaw">왼발</button><button data-touch="rightPaw">오른발</button></div>
+            <details class="pet-history"><summary>최근 대화</summary><div id="chat-history" class="chat-history"></div></details>
+            <form id="chat-form" class="chat-input"><input id="chat-text" type="text" aria-label="자두에게 보낼 말" placeholder="자두에게 말해봐" maxlength="300" autocomplete="off"><button id="chat-recent" type="button" class="icon-button" aria-label="최근 검색어로 노래 요청하기">↶</button><button id="chat-send" type="submit" class="primary" disabled>보내기</button></form>
+          </div></div>
+        </section>
+      </div>
+      <section id="library" class="library" aria-label="음악과 재생목록"><header class="pane-title"><span><img src="./assets/icon.png?v=1114s12" alt="" width="15" height="15"><span id="playing-label">자두 음악 · 재생 대기</span></span><span class="library-title-tools"><select id="library-select" aria-label="개인 보관함 선택"><option value="default">기본 보관함</option></select></span></header>
+        <form id="search-form" class="search-row"><span class="search-input-wrap"><input id="query" type="search" aria-label="노래·가수 또는 YouTube 주소" placeholder="노래 · 가수 · YouTube 주소" maxlength="500" autocomplete="off"><button id="recent-open" type="button" class="recent-toggle" aria-label="최근 검색어 보기" title="최근 검색어" aria-haspopup="menu" aria-expanded="false" aria-controls="search-recent-menu"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></span><button id="search-button" type="submit" disabled>검색</button></form>
+        <p id="list-search-feedback" class="search-feedback" role="status" aria-live="polite" hidden></p>
+        <div class="library-modes" role="group" aria-label="목록 종류"><span id="music-search-tab" class="music-search-tab"><button id="show-search-mode" type="button">유튜브 검색 <span id="search-total" hidden aria-hidden="true"></span></button><button id="music-category-open" type="button" aria-label="음악 분류 보기" title="음악 분류" aria-haspopup="menu" aria-expanded="false" aria-controls="music-category-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></span><button id="show-saved-mode" type="button">저장 목록</button><button id="show-youtube-mode" type="button" hidden>내 유튜브</button></div>
+        <div class="list-box"><header class="list-heading"><div><strong id="list-heading" role="button" tabindex="0">저장곡 0개</strong><span>재생목록</span></div></header><ul id="tracks" class="tracks" aria-label="곡 목록"></ul></div>
+        <button id="search-more" type="button" class="results-more" aria-label="검색 결과 더 보기" hidden>더 보기</button><button id="youtube-tracks-more" type="button" class="youtube-tracks-more" hidden>목록 더 불러오기</button>
+        
+        <div id="library-player-notice" class="player-notice" role="status" aria-live="polite" hidden><p id="library-player-notice-text"></p><button id="library-player-retry" type="button">다시 재생</button></div>
+        <p id="status" class="status" role="status" aria-live="polite">저장 목록을 준비하고 있어요.</p>
+        <div class="flow37-progress"><input id="playback-seek" type="range" aria-label="현재 곡 재생 위치" min="0" max="0" step="0.1" value="0" disabled><output id="playback-time" for="playback-seek">0:00 / 0:00</output></div>
+        <div class="playback-buttons"><button id="previous" disabled>◀ 이전</button><button id="play" class="primary" disabled>재생 ▶</button><button id="next" disabled>다음 ▶</button></div>
+      </section>
+    </main>
+  </div>
+  <dialog id="sharing-dialog" class="sheet" aria-labelledby="sharing-title"><header class="sheet-header"><h2 id="sharing-title">PC·아이폰·TV 목록 공유</h2><button data-close>닫기</button></header><div class="sheet-body"><p id="sharing-account"></p><button id="sharing-login" type="button">Google 계정 연결</button><p>PC 자두의 ‘PC·폰·TV 목록 공유’ 또는 TV의 ‘기기 연결’에서 받은 번호를 입력해 주세요.</p><label for="sharing-code">기기 연결번호</label><div class="sharing-code-row"><input id="sharing-code" type="text" maxlength="11" autocomplete="off" autocapitalize="characters" placeholder="12345-ABCDE"><button id="sharing-claim" type="button">기기 연결</button></div><p id="sharing-message" role="status" aria-live="polite"></p><button id="sharing-publish" type="button">이 기기 저장곡 공유</button><p>제목·영상 주소만 공유해요. 계정별 최신 10,000건을 보관하고 오래된 자료부터 정리해요.</p><div id="sharing-devices" aria-label="연결한 기기"></div><a id="sharing-tv" href="/Jadu-Web/shared-tv/">TV에서 공유 목록 열기</a></div></dialog>
+  <dialog id="account-dialog" class="sheet account-sheet" aria-labelledby="account-title"><header class="sheet-header"><h2 id="account-title">유튜브 계정</h2><button data-close>닫기</button></header><div class="sheet-body">
+    <div class="account-profile"><img id="account-avatar" alt="" width="42" height="42" referrerpolicy="no-referrer" hidden><div><strong id="account-name">유튜브 계정 연결</strong><p id="account-status" role="status">계정 상태를 확인하고 있어요.</p></div></div>
+    <div class="account-buttons"><button id="account-connect" class="primary" type="button">Google로 연결하기</button><button id="account-cancel" type="button" hidden>연결 취소</button><button id="account-change" type="button" hidden>계정 바꾸기</button><button id="account-logout" type="button" hidden>자두 로그아웃</button></div>
+    <p id="account-note" class="account-note">내 유튜브 목록은 읽기만 해요. 로그인하면 저장곡을 내 GitHub 보관함에 보관해요.</p>
+    <div id="account-lists-heading" class="account-lists-heading"><strong>가져올 목록</strong><button id="account-refresh" type="button" class="plain-button">새로고침</button></div>
+    <div id="account-playlists" class="account-playlists" aria-label="내 유튜브 재생목록"></div><button id="account-more" type="button" hidden>재생목록 더 보기</button>
+    <p id="account-message" class="status" role="status" aria-live="polite"></p>
+    <div class="account-links"><a id="account-official" href="https://www.youtube.com/feed/playlists" target="_blank" rel="noopener noreferrer">공식 유튜브에서 보기 ↗</a><a href="https://myaccount.google.com/connections" target="_blank" rel="noopener noreferrer">Google 연결 관리 ↗</a><a href="./privacy.html" target="_blank" rel="noopener noreferrer">개인정보 안내</a></div>
+  </div></dialog>
+  <dialog id="github-library-dialog" class="sheet" aria-labelledby="github-library-title"><header class="sheet-header"><h2 id="github-library-title">GitHub 보관함</h2><button data-close>닫기</button></header><div class="sheet-body"><p id="github-library-user"></p><p>같은 Google 계정으로 연결하면 기존 차량 보관함을 불러와요. 추가·삭제한 곡은 차량용 GitHub 보관함에 저장돼요.</p><p id="github-library-message" role="status" aria-live="polite"></p><div class="account-buttons"><button id="github-library-connect" class="primary" disabled>Google로 연결</button><button id="github-library-refresh" disabled>다시 불러오기</button><button id="github-library-save" disabled>GitHub에 저장</button></div></div></dialog>
+  <dialog id="settings-dialog" class="sheet" aria-labelledby="settings-title"><header class="sheet-header"><h2 id="settings-title">재생 설정</h2><button data-close>닫기</button></header><div class="sheet-body">
+    <section class="settings-section"><h3>음악 재생</h3><div class="settings-group"><button id="diagnostics-open" type="button" class="setting-link">재생 진단 기록</button><p>현재 목록의 다음 곡을 준비하고 순서대로 재생해요.</p></div></section>
+<section class="settings-section" id="phone-gap-settings"><h3>실험</h3><div class="settings-group"><label class="setting-row">곡 사이 무음 연결(실험)<input id="phone-gap-enabled" type="checkbox"></label><p>다음 곡을 준비하는 동안 무음을 이어 재생해요.</p></div></section>
+<section class="settings-section" id="legacy-account-settings" hidden><h3>유튜브 계정</h3><div class="settings-group"><button id="youtube-account-toolbar" type="button" aria-label="유튜브 계정 열기" class="setting-link">계정 · 로그인 및 내 목록</button><div class="account-detail"><strong>유튜브에서 로그인</strong><p>공식 유튜브가 새 탭으로 열립니다. 계정을 확인한 뒤 자두 탭으로 돌아와 주세요. 자두의 Google 계정을 연결하면 저장목록을 GitHub에 보관해요.</p></div><a id="youtube-account-settings" target="_blank" rel="noopener noreferrer" class="setting-link" href="https://www.youtube.com/signin">유튜브 계정 열기</a></div></section>
+
+    <section class="settings-section" id="legacy-pet-settings" hidden><h3>자두</h3><div class="settings-group"><label class="setting-row"><span>춤 박자 · BPM</span><input id="pet-dance-bpm" type="number" min="60" max="180" step="1" value="96" aria-label="춤 박자 BPM"></label><button id="pet-dance-tap" class="setting-link" type="button">박자 맞추기</button><p class="motion-tempo-note">노래 박자에 맞춰 여러 번 눌러 주세요.</p><label class="setting-row">야옹 소리<input id="pet-sound" type="checkbox" role="switch"></label><label class="setting-row">소리 크기<input id="pet-volume" type="range" min="0" max="1" step="0.05" aria-label="자두 소리 크기"></label><label class="setting-row">크기<select id="pet-size"><option value="small">작게</option><option value="medium">중간</option><option value="large">크게</option></select></label><label class="setting-row">말투<select id="pet-tone"><option value="friend">친구</option><option value="prickly">까칠</option><option value="affectionate">애교</option><option value="calm">차분</option></select></label></div></section>
+    <section class="settings-section" id="legacy-food-settings" hidden><h3>먹이</h3><div class="food-buttons"><button data-feed="treat">츄르 <span class="treat-count">—</span></button><button data-feed="meal">밥 <span class="meal-count">—</span></button><button data-feed="water">물 주기</button></div></section>
+    <section class="settings-section"><h3>표시</h3><div class="settings-group"><label class="setting-row">유튜브 보기<input id="settings-video" type="checkbox"></label><label class="setting-row" hidden>재생목록 보기<input id="settings-list" type="checkbox"></label></div></section>
+    <section class="settings-section"><h3>재생 화질</h3><div class="settings-group"><div class="account-detail"><strong>음악을 들을 때는 낮은 화질로</strong><p>영상의 설정(⚙) → 화질에서 가장 낮은 화질을 선택해 주세요. ‘고급’이 보이면 먼저 눌러 주세요.</p><p>화질은 유튜브가 자동으로 정해요. 자두에서 처음부터 최저 화질로 고정하거나 기억할 수는 없어요.</p></div><button id="quality-open-player" class="setting-link" disabled>재생 영상에서 화질 변경하기</button></div></section>
+    <section class="settings-section"><h3>저장 자료</h3><div class="settings-group"><button id="library-more" type="button" class="setting-link">목록 관리</button><button id="sharing-open" type="button" class="setting-link">목록 공유</button><button id="export-data" class="setting-link">저장 자료 내보내기</button><button id="github-library-settings" class="setting-link" type="button">GitHub 보관함 연결</button><button id="import-data" class="setting-link">저장 자료 가져오기</button><input id="import-file" type="file" accept="application/json,.json" hidden></div></section>
+    <section class="settings-section"><h3>브라우저에서 자두 사용</h3><div class="settings-group"><button id="brave-guide-open" class="setting-link">Brave에서 자두 열기 ↗</button></div></section>
+    <section class="settings-section"><h3>사용 방법</h3><div class="settings-group"><button id="help-open" class="setting-link">도움말 보기</button><button id="install-help" class="setting-link">아이폰 홈 화면에 추가</button></div></section>
+  </div></dialog>
+  <dialog id="brave-dialog" class="sheet" aria-labelledby="brave-title"><header class="sheet-header"><h2 id="brave-title">Brave에서 자두 사용</h2><button data-close>닫기</button></header><div class="sheet-body brave-content">
+    <p>Brave에서 자두를 열어 주소창 옆 사자 버튼으로 브라우저 설정을 조절할 수 있어요.</p><p><strong>주소창 없이 쓰려면</strong><br>공유 → 홈 화면에 추가 → ‘웹 앱으로 열기’를 켠 뒤, 추가한 자두 아이콘으로 실행하세요.</p><p class="brave-note">홈 화면의 자두와 Brave는 별도로 열려요. Brave의 차단 설정은 Brave 안에서 확인해 주세요.</p>
+    <a id="brave-launch" class="brave-launch" href="#">아이폰 Brave에서 자두 열기 ↗</a>
+    <p class="brave-note">아이폰에 설치된 Brave 앱을 엽니다. 앱 열기를 물으면 ‘열기’를 눌러 주세요.</p>
+    <ol><li>Brave에서 자두가 열리면 노래를 검색해 재생해 보세요.</li><li>광고·팝업 차단과 화면을 잠갔을 때 계속 재생되는지 확인해 주세요. 자두에서는 아직 그 결과를 확인할 수 없어요.</li></ol>
+    <div class="brave-data-note"><strong>저장목록 옮기기</strong><p>브라우저마다 저장목록과 로그인은 따로 보관돼요. 기존 브라우저의 <b>설정 → 저장 자료 내보내기</b>를 누른 뒤, Brave의 자두에서도 <b>설정 → 저장 자료 가져오기</b>로 옮겨 주세요.</p></div>
+    <label class="brave-address-label" for="brave-address">Brave 주소창에 직접 붙여 넣어도 돼요.</label><input id="brave-address" type="text" readonly aria-label="Brave에서 열 자두 주소"><button id="brave-copy-address">자두 주소 복사</button><p id="brave-copy-status" class="brave-note" role="status" hidden></p>
+  </div></dialog>
+  <dialog id="pet-dialog" class="sheet pet-sheet" aria-labelledby="pet-dialog-title"><header class="sheet-header"><h2 id="pet-dialog-title">자두와 대화</h2><button data-close>닫기</button></header><div id="pet-expanded" class="sheet-body"></div></dialog>
+  <div id="search-recent-menu" class="search-recent-menu" role="menu" aria-label="최근 검색어" hidden></div>
+  <div id="music-category-menu" class="search-recent-menu" role="menu" aria-label="음악 분류" hidden></div>
+  <dialog id="recent-dialog" class="sheet recent-sheet" aria-labelledby="recent-title"><header class="sheet-header"><h2 id="recent-title">최근 검색어</h2><button data-close>닫기</button></header><div id="recent-items" class="sheet-body recent-items"></div></dialog>
+  <dialog id="help-dialog" class="sheet" aria-labelledby="help-title"><header class="sheet-header"><h2 id="help-title">사용 방법</h2><button data-close>닫기</button></header><div id="help-content" class="sheet-body help-content"></div></dialog>
+  <dialog id="track-menu" class="confirmation track-menu" aria-labelledby="track-menu-title"><h2 id="track-menu-title">선택한 곡</h2><button id="copy-address">주소 복사</button><button id="open-youtube">YouTube에서 보기</button><button id="context-move-library">다른 보관함으로 이동</button><button id="context-delete-list">선택 목록 삭제</button><button id="context-clear-list">전체 목록 삭제</button><button id="youtube-my-playlists">내 유튜브 목록 가져오기</button><button id="github-library-open">GitHub 보관함</button><button id="library-export">저장목록 내보내기</button><button id="library-import">저장목록 가져오기</button><button data-close autofocus>취소</button></dialog>
+  <dialog id="playlist-import-dialog" class="sheet playlist-import-sheet" aria-labelledby="playlist-import-title"><header class="sheet-header"><h2 id="playlist-import-title">목록 가져오기</h2><button data-close>닫기</button></header><div class="sheet-body"><label class="playlist-import-destination" for="playlist-import-library">저장할 보관함<select id="playlist-import-library"><option value="default">기본 보관함</option></select></label><p id="playlist-import-summary"></p><p id="playlist-import-note"></p><a id="playlist-import-source" target="_blank" rel="noopener noreferrer" hidden>Spotify 원본 목록 ↗</a><a id="playlist-import-brave" hidden>Brave에서 이 목록 열기 ↗</a><ol id="playlist-import-tracks" aria-label="가져올 곡 목록"></ol><p id="playlist-import-unresolved"></p></div><footer class="playlist-import-footer"><button id="playlist-import-add" type="button" class="primary">목록에 추가</button><button data-close type="button">취소</button></footer></dialog>
+  <dialog id="library-name-dialog" class="confirmation library-name-dialog" aria-labelledby="library-name-title"><form id="library-name-form"><h2 id="library-name-title">개인 보관함 추가</h2><label for="library-name">보관함 이름</label><input id="library-name" type="text" maxlength="40" autocomplete="off" required placeholder="예: 좋아하는 노래"><p id="library-name-error" role="status"></p><div><button type="button" data-close>취소</button><button type="submit" class="primary">추가</button></div></form></dialog>
+  <dialog id="library-move-dialog" class="confirmation library-move-dialog" aria-labelledby="library-move-title"><form id="library-move-form"><h2 id="library-move-title">다른 보관함으로 이동</h2><p id="library-move-summary"></p><label for="library-move-target">옮길 보관함</label><select id="library-move-target" required><option value="">옮길 보관함 선택</option></select><p id="library-move-note">이미 있는 곡은 중복으로 넣지 않아요.</p><p id="library-move-error" role="status"></p><div><button type="button" data-close>취소</button><button id="library-move-submit" type="submit" class="primary" disabled>이동</button></div></form></dialog>
+  <dialog id="confirm-dialog" class="confirmation" aria-labelledby="confirm-title" aria-describedby="confirm-message"><h2 id="confirm-title">확인</h2><p id="confirm-message"></p><div><button id="confirm-cancel" autofocus>취소</button><button id="confirm-action" class="destructive">삭제</button></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+<dialog id="diagnostics-dialog" class="sheet" aria-labelledby="diagnostics-title"><header class="sheet-header"><h2 id="diagnostics-title">재생 진단 · 음악 재생</h2><button id="diagnostics-close" type="button">닫기</button></header><div class="sheet-body"><p id="diagnostics-summary"></p><p>재생·곡 종료·다음 곡 준비·화면 상태를 최근 1,200건까지 이 기기에 기록해요. 기록 파일을 노트북에서도 불러올 수 있어요. 차량이 페이지 실행을 멈춘 동안에는 기록도 멈춰요.</p><div class="diagnostics-tools"><button id="diagnostics-save" type="button">기록 저장</button><button id="diagnostics-load" type="button">기록 불러오기</button><button id="diagnostics-clear" type="button">기록 지우기</button></div><input id="diagnostics-file" type="file" accept=".json,application/json" hidden><pre id="diagnostics-output" aria-label="재생 진단 기록"></pre><p>비밀번호·로그인 토큰·개인 보관함 이름은 기록하지 않아요. 기록은 자동으로 서버에 보내지 않아요.</p></div></dialog>
+<header class="topbar"><button id="h-jadu" aria-label="자두 설정" aria-haspopup="menu" aria-expanded="false" aria-controls="h-jadu-menu" title="자두 설정"><img src="./assets/jadu-paw.svg" alt="자두 발바닥"></button><div class="page-history" aria-label="화면 이동"><button id="h-page-back" type="button" aria-label="이전 화면" disabled>‹</button><button id="h-page-forward" type="button" aria-label="다음 화면" disabled>›</button></div><nav aria-label="주 메뉴"><button data-route="search"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>검색</button><button data-route="home" aria-current="page"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3z"/></svg>홈</button><button data-route="library"><svg viewBox="0 0 24 24"><path d="M4 3v18M10 3v18m5-17 5 16"/></svg>라이브러리</button><button id="h-youtube-open" type="button" aria-label="유튜브 창" aria-controls="h-video-panel" aria-expanded="false" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 6 3-6 3z" fill="currentColor"/></svg>유튜브</button><button id="h-account-open" class="account-entry" aria-label="계정 · 로그인" title="계정 · 로그인"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></svg></button></nav><span id="h-connection" role="status">자두</span><select id="h-library-select" hidden aria-hidden="true" tabindex="-1"></select></header>
+<dialog id="av-test-dialog" class="confirmation"><h2>음원 대체 시험</h2><p id="av-test-status" role="status"></p><p>최저 화질 영상과 음원을 미리 준비하고, 음악 실패 시 소리만 재생해요.</p><div><button id="av-test-song" type="button">제이세라 재생</button><button id="av-test-switch" type="button" disabled>대체 재생 시험</button><button id="av-test-close" type="button">닫기</button></div></dialog>
+<div id="h-jadu-menu" role="menu" aria-label="자두 설정 메뉴" hidden><p>자두 설정 · 음원 대체 시험</p><button id="h-av-test" role="menuitem">음원 대체 시험</button><button id="h-advanced-open" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="9" cy="18" r="2"/></svg><span>재생 설정</span></button><button id="h-recommend-open" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/></svg><span>추천 설정</span></button><button id="h-menu-video" role="menuitem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/></svg><span>유튜브 창</span></button></div>
+<div id="h-shell"><main id="h-content" tabindex="-1"></main><div id="h-video-divider" role="separator" aria-label="유튜브 창 너비 조절" aria-orientation="vertical" aria-controls="h-video-panel" aria-valuemin="300" aria-valuemax="900" aria-valuenow="440" tabindex="0" title="좌우로 끌어서 크기 조절 · 두 번 누르면 기본 크기" hidden><span aria-hidden="true">⋮</span></div><aside id="h-video-panel" aria-label="유튜브 창" hidden>
+<div class="video-top"><button id="h-video-home" aria-label="유튜브 추천"><svg width="25" height="18" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#f24c54"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span>YouTube</span></button><button id="h-video-close" aria-label="유튜브 창 닫기">×</button></div>
+<form id="h-video-search-form" class="video-search"><input id="h-video-query" type="search" placeholder="노래 · 가수 · 플레이리스트" aria-label="유튜브 창 검색" autocomplete="off"><button id="h-video-search-submit" aria-label="유튜브 창 검색하기"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg></button></form>
+<div id="h-video-stage" hidden></div><div id="h-video-current" hidden><h2 id="h-video-title">노래를 골라 주세요</h2><button id="h-video-author" class="artist-link"></button><p id="h-notice" role="status"></p></div>
+<div class="video-results-heading"><h3 id="h-video-results-title">지금 어울리는 음악</h3><button id="h-video-reset" aria-label="유튜브 추천으로 돌아가기">추천</button></div><p id="h-video-feedback" role="status" hidden></p><div id="h-video-results" class="video-results"></div>
+</aside></div>
+<footer class="dock"><div id="h-now"><img id="h-now-cover" alt="" hidden><div><button id="h-now-title">노래를 골라 주세요</button><button id="h-now-author" class="artist-link"></button></div><button id="h-now-like" hidden aria-label="현재 곡 즐겨찾기" aria-pressed="false" disabled>♡</button></div><div class="player-controls"><div class="transport"><button id="h-previous" aria-label="이전 곡" disabled>◀</button><button id="h-play" aria-label="재생" class="play" disabled>▶</button><button id="h-next" aria-label="다음 곡" disabled>▶</button></div><div class="progress"><span id="h-elapsed">0:00</span><input id="h-seek" type="range" min="0" max="100" value="0" aria-label="재생 위치" disabled><span id="h-duration">0:00</span></div></div><button hidden id="h-video-toggle" class="video-toggle" aria-label="유튜브 영상 보기" title="유튜브 영상 보기" aria-pressed="false"><svg viewBox="0 0 28 20" aria-hidden="true"><rect x="1" y="1" width="26" height="18" rx="5" fill="currentColor"/><path d="m11 5 8 5-8 5z" fill="var(--player-color,#354339)"/></svg></button></footer>
+<dialog id="h-settings"><form method="dialog"><header><h2>추천 설정</h2><button aria-label="설정 닫기">×</button></header></form><label class="setting"><span>계절</span><select id="h-season"><option value="auto">한국 계절 · 자동</option value="spring">봄</option><option value="summer">여름</option><option value="autumn">가을</option><option value="winter">겨울</option></select></label><label class="setting"><span>시간대</span><select id="h-activity"><option value="auto">한국 시간 · 자동</option><option value="morning">출근길</option><option value="evening">퇴근길</option><option value="drive">주말 드라이브</option><option value="travel">여행</option></select></label><label class="setting"><span>날씨</span><select id="h-weather"><option value="">위치 없으면 계절·시간대로</option><option value="clear">맑음</option><option value="cloud">흐림</option><option value="rain">비</option><option value="snow">눈</option></select></label><button id="h-location-weather">현재 위치로 날씨 적용</button><p class="setting-note">사용할 때 위치 허용을 선택해 주세요. 날씨 조회에는 0.1° 단위의 대략적인 위치만 Open-Meteo로 보내며, 위치를 저장하지 않아요. 위치를 못 받으면 한국 계절·시간대로 추천해요.</p><p id="h-weather-status" role="status"></p><small>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></small></dialog>
+
+<script src="./phone-ui.js?v=1115s30" defer></script>
+</body>
+</html>
