@@ -689,8 +689,8 @@ body.iphone-browser-history .topbar .page-history{display:none!important}
 body.web2-style9 .topbar nav #h-youtube-open[aria-pressed=true]{background:#263b2e;color:#e6f5eb;border-radius:28px}
 
 /* 유튜브 모드만 상단 메뉴 아래를 채우고 음악 재생바는 숨긴다. */
-body.video-open{--iphone-video-top:86px}
+body.video-open{--iphone-video-top:0px}
 body.video-open:not(.np-video-active)>.dock,body.video-open:not(.np-video-active) #h-video-divider,body.video-open:not(.np-video-active) #h-content{display:none!important}
 body.video-open:not(.np-video-active) #h-video-panel{position:fixed!important;inset:var(--iphone-video-top) 0 0!important;width:auto!important;height:calc(100vh - var(--iphone-video-top))!important;height:calc(100dvh - var(--iphone-video-top))!important;max-width:none!important;max-height:none!important;min-height:0!important;flex:none!important;margin:0!important;border-radius:0;padding:0 max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));overflow:auto;overscroll-behavior:contain;z-index:5}
 body.video-open:not(.np-video-active) #h-video-panel .video-top{position:sticky;top:0;z-index:3}
-@media(max-width:650px){body.video-open{--iphone-video-top:108px}}
+body.video-open:not(.np-video-active)>.topbar{display:none!important}
