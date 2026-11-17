@@ -685,7 +685,7 @@ body.web2-style9 #h-content :is(.more-search,.more-artists){display:block;width:
 body.web2-style9 #h-content :is(.more-search,.more-artists):disabled{opacity:.6;cursor:wait}
 
 /* 브라우저 기본 이동을 연결한 경우 상단 이동 버튼을 감춘다. */
-body.iphone-browser-history .topbar .page-history{display:none!important}
+.topbar .page-history{display:none!important}
 body.web2-style9 .topbar nav #h-youtube-open[aria-pressed=true]{background:#263b2e;color:#e6f5eb;border-radius:28px}
 
 /* 유튜브 모드만 상단 메뉴 아래를 채우고 음악 재생바는 숨긴다. */
@@ -694,3 +694,11 @@ body.video-open:not(.np-video-active)>.dock,body.video-open:not(.np-video-active
 body.video-open:not(.np-video-active) #h-video-panel{position:fixed!important;inset:var(--iphone-video-top) 0 0!important;width:auto!important;height:calc(100vh - var(--iphone-video-top))!important;height:calc(100dvh - var(--iphone-video-top))!important;max-width:none!important;max-height:none!important;min-height:0!important;flex:none!important;margin:0!important;border-radius:0;padding:0 max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));overflow:auto;overscroll-behavior:contain;z-index:5}
 body.video-open:not(.np-video-active) #h-video-panel .video-top{position:sticky;top:0;z-index:3}
 body.video-open:not(.np-video-active)>.topbar{display:none!important}
+
+/* 유튜브 영상은 위에 두고 아래 목록만 스크롤한다. */
+body.video-open:not(.np-video-active) #h-video-panel{display:flex;flex-direction:column;overflow:hidden}
+body.video-open:not(.np-video-active) #h-video-panel>.video-top,body.video-open:not(.np-video-active) #h-video-search-form,body.video-open:not(.np-video-active) #h-video-stage{flex:none}
+body.video-open:not(.np-video-active) #h-video-stage .video-stage{height:clamp(200px,calc(56.25vw - 13.5px),50vh)!important;height:clamp(200px,calc(56.25vw - 13.5px),50dvh)!important;aspect-ratio:auto!important;margin:0 0 8px!important}
+body.video-open:not(.np-video-active) #h-video-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#h-now-playing .np-video-actions svg{display:none}
+#h-now-playing #np-video,#h-now-playing #np-video-expand{display:inline-flex;align-items:center;justify-content:center;height:34px;min-height:34px;padding:0 14px;line-height:1}
