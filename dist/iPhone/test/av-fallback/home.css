@@ -692,3 +692,16 @@ body.web2-style9 .topbar nav #h-youtube-open[aria-pressed=true]{background:#263b
 body.video-open{--av-video-top:86px}
 body.video-open>.dock{display:none!important}
 @media(max-width:650px){body.video-open{--av-video-top:108px}body.video-open #h-video-panel{bottom:12px;max-height:calc(100dvh - var(--av-video-top) - 24px)}}
+
+/* 유튜브 창은 메뉴 아래 전체 공간을 쓰고 재생 경로를 표시한다. */
+body.video-open #h-video-divider{display:none!important}
+body.video-open:not(.np-video-active) #h-content{display:none!important}
+body.video-open:not(.np-video-active) #h-video-panel{position:fixed!important;inset:var(--av-video-top,86px) 0 0!important;width:auto!important;height:calc(100vh - var(--av-video-top,86px))!important;height:calc(100dvh - var(--av-video-top,86px))!important;max-width:none!important;max-height:none!important;min-height:0!important;flex:none!important;margin:0!important;border-radius:0;padding:0 max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));overflow:auto;overscroll-behavior:contain;z-index:100}
+body.video-open:not(.np-video-active) #h-video-panel .video-top{position:sticky;top:0;z-index:3}
+body #h-video-close{flex:none;min-width:44px;min-height:44px}
+body .playback-source{display:block;min-width:0;font-size:11px;font-weight:600;line-height:1.35;color:#c6efda;white-space:normal}
+body #h-video-source{margin-left:auto;text-align:right}
+body #h-audio-source{margin-top:2px}
+#h-now-playing .np-footer #np-status{min-width:0;font-size:12px;line-height:1.35;white-space:normal}
+
+body.web2-style9 .dock #h-audio-source{font-size:11px!important;line-height:1.25!important;white-space:nowrap}
