@@ -1,0 +1,11 @@
+{
+  "version": "q2t1",
+  "videoId": "q2LWH3ATWpQ",
+  "defaultCode": "restore",
+  "restoredPlaybackSHA256": "344e4cf70e43be215c80b8fc633282c603e382930ebe472fe60f273f1861b06a",
+  "changedSourceSHA256": "434a7084f91654d06110f343a94e9b16fcdcc83c6ae464b28499bf52e8fc383e",
+  "restoredSourceSHA256": "b114cd61e86deb8afb70ef39275563a64e1bb198810aa05d4139ec7ef939652b",
+  "formalFilesChanged": false,
+  "testStoragePrefix": "jadu-q2-*",
+  "scope": "independent single-song playback trace"
+}
