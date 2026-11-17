@@ -706,3 +706,5 @@ body #h-audio-source{margin-top:2px}
 
 body.web2-style9 .dock #h-audio-source{font-size:11px!important;line-height:1.25!important;white-space:nowrap}
 
+
+#av-test-dialog>div{flex-wrap:wrap}
