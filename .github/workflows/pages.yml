@@ -37,7 +37,9 @@ jobs:
                   path = Path(info.filename)
                   if path.is_absolute() or ".." in path.parts or not info.filename.startswith("dist/"):
                       raise SystemExit("Unexpected archive path")
-              archive.extractall(".")
+              withdrawn = {("dist", "iPhone", "test"), ("dist", "Tesla", "test")}
+              archive.extractall(".", members=[info for info in archive.infolist()
+                                               if Path(info.filename).parts[:3] not in withdrawn])
           PY
       - name: Verify and unpack TV page
         shell: bash
