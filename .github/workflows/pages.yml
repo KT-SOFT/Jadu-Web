@@ -59,13 +59,17 @@ jobs:
       - name: Include reviewed music administrator
         shell: bash
         run: cp -R music-admin dist/music-admin
+      - name: Keep only current Jadu addresses
+        shell: bash
+        run: |
+          mkdir -p published
+          cp -a dist/iPhone dist/Tesla dist/LGTV dist/music-admin published/
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
-      - name: Upload dist only
+      - name: Upload current Jadu sites only
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
-          path: ./dist
+          path: ./published
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
-
