@@ -56,6 +56,9 @@ jobs:
                       raise SystemExit("Unexpected TV archive path")
               archive.extractall(destination)
           PY
+      - name: Include reviewed music administrator
+        shell: bash
+        run: cp -R music-admin dist/music-admin
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload dist only
